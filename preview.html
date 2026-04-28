@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>ماركت زوادة الدكان | Phase 1 Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* === ZAWADA — PHASE 1 PREVIEW (replicating tailwind config + globals.css) === */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  :root{
+    --teal:#009BC5; --gold:#D4AF37; --flame:#F27628;
+    --pearl-50:#FBFCFD; --pearl-100:#F4F6F8; --pearl-200:#E8ECF0;
+    --pearl-400:#9BA4AE; --pearl-500:#6B7480;
+    --ink-700:#1F232A; --ink-800:#14171C; --ink-900:#0A0C10;
+  }
+
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+
+  body{
+    font-family:'Cairo',sans-serif; color:var(--ink-800);
+    background:var(--pearl-50);
+    background-image:
+      radial-gradient(at 12% 20%, rgba(0,155,197,0.10) 0, transparent 50%),
+      radial-gradient(at 88% 0%, rgba(212,175,55,0.08) 0, transparent 50%),
+      radial-gradient(at 75% 75%, rgba(242,118,40,0.06) 0, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(0,155,197,0.07) 0, transparent 50%);
+    background-size:200% 200%; background-attachment:fixed;
+    animation:meshDrift 24s ease-in-out infinite;
+    min-height:100vh; overflow-x:hidden;
+  }
+
+  @keyframes meshDrift{
+    0%,100%{background-position:0% 0%,100% 0%,100% 100%,0% 100%}
+    50%{background-position:20% 10%,80% 20%,80% 80%,20% 90%}
+  }
+
+  @keyframes goldPulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0.7), 0 0 20px -4px rgba(242,118,40,0.5)}
+    50%{box-shadow:0 0 0 12px rgba(212,175,55,0), 0 0 30px -2px rgba(242,118,40,0.7)}
+  }
+
+  @keyframes shimmer{
+    0%{background-position:-200% 0}
+    100%{background-position:200% 0}
+  }
+
+  @keyframes fadeInUp{
+    0%{opacity:0;transform:translateY(20px)}
+    100%{opacity:1;transform:translateY(0)}
+  }
+
+  .container{max-width:1400px;margin:0 auto;padding:0 1rem}
+
+  /* Hero */
+  .hero{padding:5rem 1rem 3rem;text-align:center}
+
+  .badge-pulse{
+    display:inline-flex;align-items:center;gap:.5rem;
+    padding:.5rem 1.25rem;border-radius:9999px;
+    background:linear-gradient(135deg,var(--gold),var(--flame));
+    color:white;font-weight:700;font-size:.875rem;
+    box-shadow:0 0 24px -4px rgba(212,175,55,0.5), 0 8px 24px -8px rgba(242,118,40,0.4);
+    animation:goldPulse 2.5s cubic-bezier(.4,0,.6,1) infinite, fadeInUp .6s both;
+  }
+
+  h1{
+    font-family:'Amiri',serif;font-weight:700;
+    font-size:clamp(3rem,7vw,5rem);
+    letter-spacing:-0.04em;line-height:1;
+    margin:1.5rem 0 1rem;
+    animation:fadeInUp .6s .1s both;
+  }
+
+  .text-gold-shine{
+    background:linear-gradient(135deg,#D4AF37 0%,#F4D472 25%,#F27628 50%,#F4D472 75%,#D4AF37 100%);
+    background-size:200% 100%;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:shimmer 3s linear infinite;
+  }
+
+  .text-gold-gradient{
+    background:linear-gradient(135deg,var(--gold),var(--flame));
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  .subtitle{font-size:1.25rem;color:var(--ink-700);margin-bottom:.5rem;animation:fadeInUp .6s .2s both}
+  .tagline{font-size:.875rem;color:var(--pearl-500);margin-bottom:3rem;animation:fadeInUp .6s .3s both}
+  .tagline span{color:#0089AE;font-weight:600}
+
+  /* Glass Card */
+  .glass-card{
+    max-width:60rem;margin:0 auto;padding:2rem 1.5rem;
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(72px) saturate(2);
+    -webkit-backdrop-filter:blur(72px) saturate(2);
+    border:1px solid rgba(255,255,255,0.7);
+    border-radius:2rem;
+    box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.8), 0 16px 48px -12px rgba(0,0,0,0.12);
+    animation:fadeInUp .6s .4s both;
+  }
+
+  .stats{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2rem;
+  }
+  @media(min-width:768px){.stats{grid-template-columns:repeat(4,1fr);gap:1.5rem}}
+
+  .stat-card{
+    background:rgba(255,255,255,0.4);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.5);
+    border-radius:1rem; padding:1rem; text-align:center;
+    transition:all .5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .stat-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 24px 48px -16px rgba(0,0,0,0.18)}
+  .stat-icon{font-size:2rem;margin-bottom:.5rem}
+  .stat-value{font-size:1.75rem;font-weight:700;line-height:1}
+  .stat-label{font-size:.75rem;color:var(--ink-700);margin-top:.25rem}
+  @media(min-width:768px){.stat-value{font-size:2rem}.stat-label{font-size:.875rem}}
+
+  /* Magnetic CTAs */
+  .cta-row{display:flex;flex-direction:column;gap:1rem;justify-content:center;margin-top:1rem}
+  @media(min-width:640px){.cta-row{flex-direction:row}}
+
+  .btn-gold{
+    position:relative;overflow:hidden;
+    padding:1rem 2rem;border-radius:1rem;
+    background:linear-gradient(135deg,var(--gold),var(--flame));
+    color:white;font-weight:700;font-size:1rem;
+    box-shadow:0 0 24px -4px rgba(212,175,55,0.5), 0 8px 24px -8px rgba(242,118,40,0.4);
+    border:none;cursor:pointer;transition:all .5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .btn-gold::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.35) 50%,transparent 70%);
+    transform:translateX(-100%);transition:transform .7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .btn-gold:hover::before{transform:translateX(100%)}
+  .btn-gold:hover{transform:translateY(-2px) scale(1.015);box-shadow:0 0 48px -8px rgba(212,175,55,0.6), 0 16px 48px -16px rgba(242,118,40,0.5)}
+
+  .btn-glass{
+    padding:1rem 2rem;border-radius:1rem;
+    background:rgba(255,255,255,0.6);backdrop-filter:blur(20px);
+    border:1px solid var(--pearl-200);
+    color:var(--ink-800);font-weight:700;cursor:pointer;
+    transition:all .5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .btn-glass:hover{background:rgba(255,255,255,0.8);transform:translateY(-2px)}
+
+  /* Section title */
+  section{padding:1rem 1rem 2rem}
+  .section-title{font-size:1.875rem;font-weight:700;margin-bottom:1.5rem}
+  @media(min-width:768px){.section-title{font-size:2.25rem}}
+
+  /* Category chips */
+  .chips-row{display:flex;gap:.75rem;overflow-x:auto;padding-bottom:.75rem;scrollbar-width:none}
+  .chips-row::-webkit-scrollbar{display:none}
+
+  .chip{
+    flex-shrink:0;padding:.75rem 1.25rem;border-radius:9999px;
+    font-weight:600;font-size:.875rem;white-space:nowrap;cursor:pointer;
+    background:rgba(255,255,255,0.6);backdrop-filter:blur(72px);
+    border:1px solid rgba(255,255,255,0.5);color:var(--ink-700);
+    transition:all .3s;
+  }
+  .chip:hover{box-shadow:0 8px 24px -8px rgba(0,0,0,0.1)}
+
+  .chip-pulse{
+    background:linear-gradient(135deg,var(--gold),var(--flame));color:white;
+    position:relative;
+    box-shadow:0 0 24px -4px rgba(212,175,55,0.5), 0 8px 24px -8px rgba(242,118,40,0.4);
+  }
+  .chip-pulse::after{
+    content:"";position:absolute;inset:-4px;border-radius:9999px;
+    background:linear-gradient(135deg,var(--gold),var(--flame));
+    opacity:0.6;z-index:-1;
+    animation:goldPulse 2.5s cubic-bezier(0.4,0,0.6,1) infinite;filter:blur(4px);
+  }
+
+  /* Bento grid */
+  .bento{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
+  @media(min-width:768px){.bento{grid-template-columns:repeat(4,1fr);gap:1.25rem}.bento-feature{grid-column:span 2;grid-row:span 2}}
+  @media(min-width:1280px){.bento{grid-template-columns:repeat(6,1fr)}}
+
+  .product{
+    background:white;border-radius:1.5rem;overflow:hidden;
+    box-shadow:0 8px 24px -8px rgba(0,0,0,0.10), 0 4px 12px -4px rgba(0,0,0,0.06);
+    transition:all .5s cubic-bezier(0.16,1,0.3,1);position:relative;cursor:pointer;
+  }
+  .product:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 24px 48px -16px rgba(0,0,0,0.18)}
+
+  .product-img{position:relative;aspect-ratio:1;overflow:hidden;background:var(--pearl-100)}
+  .product-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+  .product:hover .product-img img{transform:scale(1.1)}
+
+  .badge-discount{
+    position:absolute;top:.75rem;right:.75rem;
+    background:linear-gradient(135deg,var(--gold),var(--flame));
+    color:white;font-size:.75rem;font-weight:700;
+    padding:.25rem .625rem;border-radius:9999px;
+    box-shadow:0 0 24px -4px rgba(212,175,55,0.5);
+  }
+  .badge-best{
+    position:absolute;top:.75rem;left:.75rem;
+    background:linear-gradient(135deg,rgba(20,23,28,0.85),rgba(10,12,16,0.7));
+    backdrop-filter:blur(72px);
+    color:white;font-size:.75rem;font-weight:700;
+    padding:.25rem .625rem;border-radius:9999px;
+  }
+
+  .product-info{padding:.75rem}
+  @media(min-width:768px){.product-info{padding:1rem}}
+  .product-brand{font-size:.75rem;color:var(--pearl-500);margin-bottom:.25rem}
+  .product-name{font-weight:700;font-size:.875rem;line-height:1.3;margin-bottom:.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  @media(min-width:768px){.product-name{font-size:1rem}}
+  .price-row{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+  .price-current{font-size:1.125rem;font-weight:700}
+  .price-old{font-size:.75rem;color:var(--pearl-400);text-decoration:line-through}
+  .price-unit{font-size:.75rem;color:var(--pearl-500)}
+  .add-cart{
+    width:100%;margin-top:.75rem;padding:.5rem;border-radius:.75rem;
+    background:linear-gradient(135deg,var(--gold),var(--flame));
+    color:white;font-weight:700;font-size:.75rem;border:none;cursor:pointer;
+    transition:all .3s;
+  }
+  .add-cart:hover{box-shadow:0 0 24px -4px rgba(212,175,55,0.6)}
+
+  /* Phase 1 footer */
+  .phase-footer{
+    padding:2rem;border-radius:2rem;color:white;
+    background:linear-gradient(135deg,rgba(20,23,28,0.85),rgba(10,12,16,0.7));
+    backdrop-filter:blur(72px);
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.08), 0 24px 48px -16px rgba(0,0,0,0.5);
+    margin:2rem 0 6rem;
+  }
+  .phase-footer h3{font-size:1.5rem;margin-bottom:1.5rem}
+  .checklist{display:grid;grid-template-columns:1fr;gap:.75rem}
+  @media(min-width:768px){.checklist{grid-template-columns:repeat(2,1fr)}}
+  .check-item{
+    padding:.75rem;border-radius:1rem;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.1);
+    font-size:.875rem;
+  }
+  .next-phase{margin-top:1.5rem;font-size:.875rem;color:rgba(255,255,255,0.6);text-align:center}
+
+  /* Bottom Nav (Phase 2 preview) */
+  .bottom-nav{
+    position:fixed;bottom:0;left:0;right:0;z-index:50;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(72px) saturate(2);
+    border-top:1px solid rgba(255,255,255,0.5);
+    padding:.75rem 1rem;padding-bottom:max(env(safe-area-inset-bottom),.75rem);
+    display:flex;justify-content:space-around;align-items:center;
+    box-shadow:0 -8px 32px -8px rgba(0,0,0,0.08);
+  }
+  .nav-item{display:flex;flex-direction:column;align-items:center;gap:.25rem;font-size:.75rem;color:var(--pearl-500);text-decoration:none;cursor:pointer;position:relative}
+  .nav-item.active{color:var(--flame)}
+  .nav-icon{font-size:1.5rem}
+  .badge-cart{position:absolute;top:-4px;right:-8px;background:linear-gradient(135deg,var(--gold),var(--flame));color:white;font-size:.625rem;font-weight:700;min-width:18px;height:18px;border-radius:9999px;display:flex;align-items:center;justify-content:center;padding:0 5px}
+
+  @media(min-width:768px){.bottom-nav{display:none}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge-pulse">✨ Phase 1 — Luxury Foundation</div>
+  <h1><span class="text-gold-shine">ماركت زوادة الدكان</span></h1>
+  <p class="subtitle">بوتيك التسوق الفاخر • تجربة استثنائية بمعايير ضيافة راقية</p>
+  <p class="tagline">Inspired by <span>Keif Al-Diafa</span> aesthetic</p>
+
+  <div class="glass-card">
+    <div class="stats">
+      <div class="stat-card"><div class="stat-icon">🛍️</div><div class="stat-value text-gold-gradient">20+</div><div class="stat-label">منتج فاخر</div></div>
+      <div class="stat-card"><div class="stat-icon">📦</div><div class="stat-value text-gold-gradient">10</div><div class="stat-label">فئة متنوعة</div></div>
+      <div class="stat-card"><div class="stat-icon">🌍</div><div class="stat-value text-gold-gradient">12</div><div class="stat-label">بلد منشأ</div></div>
+      <div class="stat-card"><div class="stat-icon">⭐</div><div class="stat-value text-gold-gradient">4.8★</div><div class="stat-label">تقييم العملاء</div></div>
+    </div>
+    <div class="cta-row">
+      <button class="btn-gold">🛒 ابدأ التسوق الآن</button>
+      <button class="btn-glass">💬 تواصل عبر واتساب</button>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY CHIPS -->
+<section class="container">
+  <h2 class="section-title"><span class="text-gold-gradient">الأقسام</span></h2>
+  <div class="chips-row">
+    <button class="chip chip-pulse">🔥 عروض اليوم</button>
+    <button class="chip">🍎 فواكه طازجة</button>
+    <button class="chip">🥬 خضروات</button>
+    <button class="chip">🧀 ألبان وأجبان</button>
+    <button class="chip">🥖 مخبوزات</button>
+    <button class="chip">🥩 لحوم ودواجن</button>
+    <button class="chip">🍚 خزانة المؤن</button>
+    <button class="chip">☕ مشروبات</button>
+    <button class="chip">🍫 حلويات</button>
+    <button class="chip">🪔 عطور</button>
+  </div>
+</section>
+
+<!-- BENTO PRODUCTS -->
+<section class="container">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:2rem;margin-bottom:1.5rem">
+    <h2 class="section-title" style="margin:0"><span class="text-gold-gradient">🔥 عروض اليوم</span></h2>
+    <span style="font-size:.875rem;color:var(--pearl-500)">8 منتجات</span>
+  </div>
+
+  <div class="bento">
+    <!-- Featured (large) -->
+    <div class="product bento-feature">
+      <div class="product-img">
+        <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&fm=webp&q=80&w=1200" alt="تفاح لبناني طازج" loading="eager">
+        <div class="badge-discount">-19%</div>
+        <div class="badge-best">⭐ الأكثر مبيعاً</div>
+      </div>
+      <div class="product-info">
+        <p class="product-brand">مزارع البقاع</p>
+        <h3 class="product-name">تفاح لبناني طازج</h3>
+        <div class="price-row">
+          <div><span class="price-current text-gold-gradient">١٬٤٥٠</span> <span class="price-old">١٬٨٠٠</span></div>
+          <span class="price-unit">كجم</span>
+        </div>
+        <button class="add-cart">أضف للسلة</button>
+      </div>
+    </div>
+    <!-- Regular products -->
+    <div class="product"><div class="product-img"><img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&fm=webp&q=80&w=600" alt="فراولة" loading="lazy"><div class="badge-discount">-20%</div></div><div class="product-info"><p class="product-brand">مزارع تعز</p><h3 class="product-name">فراولة بلدية فاخرة</h3><div class="price-row"><div><span class="price-current text-gold-gradient">٢٬٢٠٠</span></div><span class="price-unit">500جم</span></div><button class="add-cart">أضف للسلة</button></div></div>
+    <div class="product"><div class="product-img"><img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&fm=webp&q=80&w=600" alt="أفوكادو" loading="lazy"><div class="badge-discount">-16%</div><div class="badge-best">⭐ الأكثر مبيعاً</div></div><div class="product-info"><p class="product-brand">GreenPeak</p><h3 class="product-name">أفوكادو هاس مكسيكي</h3><div class="price-row"><div><span class="price-current text-gold-gradient">٣٬٢٠٠</span></div><span class="price-unit">حبة</span></div><button class="add-cart">أضف للسلة</button></div></div>
+    <div class="product"><div class="product-img"><img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&fm=webp&q=80&w=600" alt="دجاج" loading="lazy"><div class="badge-discount">-13%</div></div><div class="product-info"><p class="product-brand">السنبلة الذهبية</p><h3 class="product-name">صدور دجاج طازج</h3><div class="price-row"><div><span class="price-current text-gold-gradient">٣٬٤٥٠</span></div><span class="price-unit">كجم</span></div><button class="add-cart">أضف للسلة</button></div></div>
+    <div class="product"><div class="product-img"><img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&fm=webp&q=80&w=600" alt="أرز بسمتي" loading="lazy"><div class="badge-discount">-13%</div><div class="badge-best">⭐ الأكثر مبيعاً</div></div><div class="product-info"><p class="product-brand">الشعلان</p><h3 class="product-name">أرز بسمتي الشعلان</h3><div class="price-row"><div><span class="price-current text-gold-gradient">٨٬٥٠٠</span></div><span class="price-unit">5كجم</span></div><button class="add-cart">أضف للسلة</button></div></div>
+    <div class="product"><div class="product-img"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&fm=webp&q=80&w=600" alt="قهوة عربية" loading="lazy"><div class="badge-discount">-13%</div></div><div class="product-info"><p class="product-brand">بن العميد</p><h3 class="product-name">قهوة عربية مختصة</h3><div class="price-row"><div><span class="price-current text-gold-gradient">٤٬٨٠٠</span></div><span class="price-unit">500جم</span></div><button class="add-cart">أضف للسلة</button></div></div>
+    <div class="product"><div class="product-img"><img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&fm=webp&q=80&w=600" alt="مكسرات" loading="lazy"><div class="badge-discount">-12%</div></div><div class="product-info"><p class="product-brand">بيت المكسرات</p><h3 class="product-name">مكسرات مشكلة ملكية</h3><div class="price-row"><div><span class="price-current text-gold-gradient">٧٬٨٠٠</span></div><span class="price-unit">500جم</span></div><button class="add-cart">أضف للسلة</button></div></div>
+    <div class="product"><div class="product-img"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&fm=webp&q=80&w=600" alt="عطر" loading="lazy"><div class="badge-discount">-16%</div><div class="badge-best">⭐ الأكثر مبيعاً</div></div><div class="product-info"><p class="product-brand">العربية للعود</p><h3 class="product-name">عطر شرقي فاخر — عود ملكي</h3><div class="price-row"><div><span class="price-current text-gold-gradient">٢٤٬٥٠٠</span></div><span class="price-unit">100مل</span></div><button class="add-cart">أضف للسلة</button></div></div>
+  </div>
+</section>
+
+<!-- PHASE 1 STATUS -->
+<section class="container">
+  <div class="phase-footer">
+    <h3 class="text-gold-shine" style="display:inline-block">✅ Phase 1 — مكتملة</h3>
+    <div class="checklist">
+      <div class="check-item">🎨 لوحة ألوان فاخرة (Teal #009BC5 + Gold #D4AF37→#F27628)</div>
+      <div class="check-item">🌫️ Mesh Gradient متحرك (24s loop)</div>
+      <div class="check-item">✨ Glassmorphism 2.0 (light/dark/strong)</div>
+      <div class="check-item">🧲 Magnetic CTA Buttons مع shimmer</div>
+      <div class="check-item">✏️ Cairo + Amiri fonts عبر next/font</div>
+      <div class="check-item">🛒 20 منتج فاخر موزعة على 10 فئات</div>
+      <div class="check-item">🖼️ صور WebP (q=80) من Unsplash</div>
+      <div class="check-item">📱 RTL + Safe-area + PWA-ready</div>
+    </div>
+    <p class="next-phase">الخطوة التالية: Phase 2 — Zustand Store + Header + Bottom Nav + Product Grid</p>
+  </div>
+</section>
+
+<!-- BOTTOM NAV (mobile only - Phase 3 preview) -->
+<nav class="bottom-nav">
+  <a class="nav-item active"><span class="nav-icon">🏠</span><span>الرئيسية</span></a>
+  <a class="nav-item"><span class="nav-icon">🗂️</span><span>الأقسام</span></a>
+  <a class="nav-item"><span class="nav-icon">🛒</span><span>السلة</span><span class="badge-cart">3</span></a>
+  <a class="nav-item"><span class="nav-icon">👤</span><span>حسابي</span></a>
+</nav>
+
+</body>
+</html>
