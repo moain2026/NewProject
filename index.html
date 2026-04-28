@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ماركت زوادة الدكان | بوتيك التسوق الفاخر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        teal: {50:'#E6F7FB',100:'#B3E5F0',500:'#009BC5',600:'#0089AE',700:'#006B89',900:'#002F3D'},
+        gold: {500:'#D4AF37',600:'#B8942A'},
+        flame: {500:'#F27628'},
+        pearl: {50:'#FBFCFD',100:'#F4F6F8',200:'#E8ECF0',300:'#D0D7DE',400:'#9BA4AE',500:'#6B7480'},
+        ink: {700:'#1F232A',800:'#14171C',900:'#0A0C10'},
+      },
+      fontFamily: { cairo:['Cairo','sans-serif'], amiri:['Amiri','serif'] },
+      keyframes: {
+        'gold-pulse': {
+          '0%,100%': { boxShadow:'0 0 0 0 rgba(212,175,55,0.7), 0 0 20px -4px rgba(242,118,40,0.5)' },
+          '50%': { boxShadow:'0 0 0 12px rgba(212,175,55,0), 0 0 30px -2px rgba(242,118,40,0.7)' }
+        },
+        'mesh-drift': {
+          '0%,100%': { backgroundPosition:'0% 0%, 100% 0%, 100% 100%, 0% 100%' },
+          '50%': { backgroundPosition:'20% 10%, 80% 20%, 80% 80%, 20% 90%' }
+        },
+        shimmer: { '0%':{backgroundPosition:'-200% 0'}, '100%':{backgroundPosition:'200% 0'} },
+        'fade-in-up': { '0%':{opacity:'0',transform:'translateY(20px)'}, '100%':{opacity:'1',transform:'translateY(0)'} }
+      },
+      animation: {
+        'gold-pulse':'gold-pulse 2.5s cubic-bezier(0.4,0,0.6,1) infinite',
+        'mesh-drift':'mesh-drift 24s ease-in-out infinite',
+        shimmer:'shimmer 3s linear infinite',
+        'fade-in-up':'fade-in-up 0.6s cubic-bezier(0.16,1,0.3,1) both'
+      }
+    }
+  }
+}
+</script>
+<style>
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #FBFCFD;
+  background-image:
+    radial-gradient(at 12% 20%, rgba(0,155,197,0.10) 0px, transparent 50%),
+    radial-gradient(at 88% 0%, rgba(212,175,55,0.08) 0px, transparent 50%),
+    radial-gradient(at 75% 75%, rgba(242,118,40,0.06) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(0,155,197,0.07) 0px, transparent 50%);
+  background-size: 200% 200%;
+  animation: mesh-drift 24s ease-in-out infinite;
+}
+.font-display { font-family: 'Amiri', serif; }
+.glass-light { background: rgba(255,255,255,0.6); backdrop-filter: blur(48px) saturate(150%); -webkit-backdrop-filter: blur(48px) saturate(150%); border: 1px solid rgba(255,255,255,0.5); }
+.glass-light-strong { background: rgba(255,255,255,0.8); backdrop-filter: blur(48px) saturate(200%); -webkit-backdrop-filter: blur(48px) saturate(200%); border: 1px solid rgba(255,255,255,0.7); box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.8), 0 16px 48px -12px rgba(0,0,0,0.12); }
+.glass-dark { background: linear-gradient(135deg, rgba(20,23,28,0.85), rgba(10,12,16,0.7)); backdrop-filter: blur(48px) saturate(150%); -webkit-backdrop-filter: blur(48px) saturate(150%); border: 1px solid rgba(255,255,255,0.08); }
+.bg-gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #F27628 100%); }
+.text-gold-gradient { background: linear-gradient(135deg,#D4AF37,#F27628); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.text-gold-shine { background: linear-gradient(135deg,#D4AF37 0%,#F4D472 25%,#F27628 50%,#F4D472 75%,#D4AF37 100%); background-size:200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite; }
+.shadow-gold-glow { box-shadow: 0 0 24px -4px rgba(212,175,55,0.5), 0 8px 24px -8px rgba(242,118,40,0.4); }
+.shadow-luxe-lg { box-shadow: 0 24px 48px -16px rgba(0,0,0,0.18), 0 12px 24px -8px rgba(0,0,0,0.10); }
+.btn-magnetic { position: relative; overflow: hidden; transition: all 0.5s cubic-bezier(0.16,1,0.3,1); }
+.btn-magnetic::before { content:''; position:absolute; inset:0; background: linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.35) 50%,transparent 70%); transform:translateX(-100%); transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.btn-magnetic:hover::before { transform: translateX(100%); }
+.btn-magnetic:hover { transform: translateY(-2px) scale(1.015); }
+.card-luxe { transition: all 0.5s cubic-bezier(0.16,1,0.3,1); }
+.card-luxe:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 24px 48px -16px rgba(0,0,0,0.18); }
+.pulse-gold { position: relative; }
+.pulse-gold::after { content:''; position:absolute; inset:-4px; border-radius:inherit; background:linear-gradient(135deg,#D4AF37,#F27628); opacity:0.6; z-index:-1; animation: gold-pulse 2.5s cubic-bezier(0.4,0,0.6,1) infinite; filter: blur(4px); }
+.snap-x-pills { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.snap-x-pills::-webkit-scrollbar { display: none; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: rgba(232,236,240,0.5); border-radius: 999px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg,#D4AF37,#F27628); border-radius: 999px; }
+.bento-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+@media (min-width:768px) { .bento-grid { grid-template-columns: repeat(4,1fr); gap:1.25rem; } .bento-feature { grid-column: span 2; grid-row: span 2; } }
+@media (min-width:1280px) { .bento-grid { grid-template-columns: repeat(6,1fr); } }
+</style>
+</head>
+<body class="text-ink-800 min-h-screen">
+
+<!-- ═══════════════════════════════════════════ HERO ═══════════════════════════════════════════ -->
+<section class="relative pt-12 pb-20 px-4 md:pt-20">
+  <div class="container mx-auto max-w-7xl">
+    <div class="flex justify-center mb-6 animate-fade-in-up">
+      <div class="pulse-gold inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gold-gradient text-white text-sm font-bold shadow-gold-glow">
+        <span>✨</span><span>Phase 1 — Luxury Foundation</span>
+      </div>
+    </div>
+
+    <h1 class="text-center text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-4 animate-fade-in-up" style="animation-delay:100ms">
+      <span class="text-gold-shine">ماركت زوادة الدكان</span>
+    </h1>
+
+    <p class="text-center text-lg md:text-xl text-ink-700 max-w-2xl mx-auto mb-2 animate-fade-in-up" style="animation-delay:200ms">
+      بوتيك التسوق الفاخر • تجربة استثنائية بمعايير ضيافة راقية
+    </p>
+    <p class="text-center text-sm text-pearl-500 mb-12 animate-fade-in-up" style="animation-delay:300ms">
+      Inspired by <span class="text-teal-600 font-semibold">Keif Al-Diafa</span> aesthetic
+    </p>
+
+    <div class="glass-light-strong rounded-3xl p-6 md:p-10 max-w-4xl mx-auto shadow-luxe-lg" style="border-radius: 2rem">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="card-luxe text-center p-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/50">
+          <div class="text-3xl mb-2">🛍️</div>
+          <div class="text-2xl md:text-3xl font-bold text-gold-gradient">20+</div>
+          <div class="text-xs md:text-sm text-ink-700 mt-1">منتج فاخر</div>
+        </div>
+        <div class="card-luxe text-center p-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/50">
+          <div class="text-3xl mb-2">📦</div>
+          <div class="text-2xl md:text-3xl font-bold text-gold-gradient">10</div>
+          <div class="text-xs md:text-sm text-ink-700 mt-1">فئة متنوعة</div>
+        </div>
+        <div class="card-luxe text-center p-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/50">
+          <div class="text-3xl mb-2">🌍</div>
+          <div class="text-2xl md:text-3xl font-bold text-gold-gradient">12</div>
+          <div class="text-xs md:text-sm text-ink-700 mt-1">بلد منشأ</div>
+        </div>
+        <div class="card-luxe text-center p-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/50">
+          <div class="text-3xl mb-2">⭐</div>
+          <div class="text-2xl md:text-3xl font-bold text-gold-gradient">4.8★</div>
+          <div class="text-xs md:text-sm text-ink-700 mt-1">تقييم العملاء</div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
+        <button class="btn-magnetic px-8 py-4 rounded-2xl bg-gold-gradient text-white font-bold shadow-gold-glow text-base md:text-lg">
+          🛒 ابدأ التسوق الآن
+        </button>
+        <button class="btn-magnetic px-8 py-4 rounded-2xl bg-white/60 backdrop-blur-xl border border-pearl-200 text-ink-800 font-bold">
+          💬 تواصل عبر واتساب
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ CATEGORY CHIPS ═══════════════════════════════════════════ -->
+<section class="px-4 mb-12">
+  <div class="container mx-auto max-w-7xl">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-ink-800">
+      <span class="text-gold-gradient">الأقسام</span>
+    </h2>
+    <div class="snap-x-pills overflow-x-auto flex gap-3 pb-3" style="scrollbar-width:none">
+      <button class="pulse-gold shrink-0 snap-start px-5 py-3 rounded-full bg-gold-gradient text-white font-semibold text-sm whitespace-nowrap shadow-gold-glow">🔥 عروض اليوم</button>
+      <button class="glass-light shrink-0 snap-start px-5 py-3 rounded-full text-ink-700 font-semibold text-sm whitespace-nowrap">🍎 فواكه طازجة</button>
+      <button class="glass-light shrink-0 snap-start px-5 py-3 rounded-full text-ink-700 font-semibold text-sm whitespace-nowrap">🥬 خضروات</button>
+      <button class="glass-light shrink-0 snap-start px-5 py-3 rounded-full text-ink-700 font-semibold text-sm whitespace-nowrap">🧀 ألبان وأجبان</button>
+      <button class="glass-light shrink-0 snap-start px-5 py-3 rounded-full text-ink-700 font-semibold text-sm whitespace-nowrap">🥖 مخبوزات</button>
+      <button class="glass-light shrink-0 snap-start px-5 py-3 rounded-full text-ink-700 font-semibold text-sm whitespace-nowrap">🥩 لحوم ودواجن</button>
+      <button class="glass-light shrink-0 snap-start px-5 py-3 rounded-full text-ink-700 font-semibold text-sm whitespace-nowrap">🍚 خزانة المؤن</button>
+      <button class="glass-light shrink-0 snap-start px-5 py-3 rounded-full text-ink-700 font-semibold text-sm whitespace-nowrap">☕ مشروبات</button>
+      <button class="glass-light shrink-0 snap-start px-5 py-3 rounded-full text-ink-700 font-semibold text-sm whitespace-nowrap">🍫 حلويات وشوكولاتة</button>
+      <button class="glass-light shrink-0 snap-start px-5 py-3 rounded-full text-ink-700 font-semibold text-sm whitespace-nowrap">🪔 عطور وبخور</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ DEALS GRID (Bento) ═══════════════════════════════════════════ -->
+<section class="px-4 mb-16">
+  <div class="container mx-auto max-w-7xl">
+    <div class="flex items-baseline justify-between mb-6">
+      <h2 class="text-2xl md:text-3xl font-bold text-ink-800"><span class="text-gold-gradient">🔥 عروض اليوم</span></h2>
+      <span class="text-sm text-pearl-500">8 منتجات</span>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Featured (Bento) -->
+      <div class="card-luxe bento-feature group relative overflow-hidden rounded-3xl bg-white shadow-lg">
+        <div class="relative aspect-square overflow-hidden bg-pearl-100">
+          <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&fm=webp&q=80&w=1200" alt="تفاح لبناني" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute top-3 right-3 bg-gold-gradient text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-gold-glow">-19%</div>
+          <div class="absolute top-3 left-3 glass-dark text-white text-xs font-bold px-2.5 py-1 rounded-full">⭐ الأكثر مبيعاً</div>
+        </div>
+        <div class="p-4">
+          <p class="text-xs text-pearl-500 mb-1">مزارع البقاع</p>
+          <h3 class="font-bold text-base text-ink-800 mb-2">تفاح لبناني طازج</h3>
+          <div class="flex items-baseline justify-between gap-2">
+            <div class="flex items-baseline gap-2">
+              <span class="text-lg font-bold text-gold-gradient">١٬٤٥٠</span>
+              <span class="text-xs text-pearl-400 line-through">١٬٨٠٠</span>
+            </div>
+            <span class="text-xs text-pearl-500">كجم</span>
+          </div>
+          <button class="btn-magnetic w-full mt-3 py-2 rounded-xl text-sm bg-gold-gradient text-white font-bold shadow-gold-glow">أضف للسلة</button>
+        </div>
+      </div>
+
+      <!-- Other deal cards -->
+      <div class="card-luxe group relative overflow-hidden rounded-3xl bg-white shadow-lg">
+        <div class="relative aspect-square overflow-hidden bg-pearl-100">
+          <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&fm=webp&q=80&w=800" alt="فراولة" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute top-3 right-3 bg-gold-gradient text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-gold-glow">-20%</div>
+        </div>
+        <div class="p-3">
+          <p class="text-xs text-pearl-500">مزارع تعز</p>
+          <h3 class="font-bold text-sm text-ink-800 mb-2 line-clamp-2">فراولة بلدية فاخرة</h3>
+          <div class="flex items-baseline justify-between"><span class="text-base font-bold text-gold-gradient">٢٬٢٠٠</span><span class="text-xs text-pearl-500">علبة</span></div>
+        </div>
+      </div>
+
+      <div class="card-luxe group relative overflow-hidden rounded-3xl bg-white shadow-lg">
+        <div class="relative aspect-square overflow-hidden bg-pearl-100">
+          <img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&fm=webp&q=80&w=800" alt="أفوكادو" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute top-3 right-3 bg-gold-gradient text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-gold-glow">-16%</div>
+        </div>
+        <div class="p-3">
+          <p class="text-xs text-pearl-500">GreenPeak</p>
+          <h3 class="font-bold text-sm text-ink-800 mb-2 line-clamp-2">أفوكادو هاس مكسيكي</h3>
+          <div class="flex items-baseline justify-between"><span class="text-base font-bold text-gold-gradient">٣٬٢٠٠</span><span class="text-xs text-pearl-500">حبة</span></div>
+        </div>
+      </div>
+
+      <div class="card-luxe group relative overflow-hidden rounded-3xl bg-white shadow-lg">
+        <div class="relative aspect-square overflow-hidden bg-pearl-100">
+          <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&fm=webp&q=80&w=800" alt="دجاج" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute top-3 right-3 bg-gold-gradient text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-gold-glow">-13%</div>
+        </div>
+        <div class="p-3">
+          <p class="text-xs text-pearl-500">السنبلة الذهبية</p>
+          <h3 class="font-bold text-sm text-ink-800 mb-2 line-clamp-2">صدور دجاج طازج</h3>
+          <div class="flex items-baseline justify-between"><span class="text-base font-bold text-gold-gradient">٣٬٤٥٠</span><span class="text-xs text-pearl-500">كجم</span></div>
+        </div>
+      </div>
+
+      <div class="card-luxe group relative overflow-hidden rounded-3xl bg-white shadow-lg">
+        <div class="relative aspect-square overflow-hidden bg-pearl-100">
+          <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&fm=webp&q=80&w=800" alt="أرز بسمتي" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute top-3 right-3 bg-gold-gradient text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-gold-glow">-13%</div>
+          <div class="absolute top-3 left-3 glass-dark text-white text-xs font-bold px-2.5 py-1 rounded-full">⭐ مبيعاً</div>
+        </div>
+        <div class="p-3">
+          <p class="text-xs text-pearl-500">الشعلان</p>
+          <h3 class="font-bold text-sm text-ink-800 mb-2 line-clamp-2">أرز بسمتي الشعلان</h3>
+          <div class="flex items-baseline justify-between"><span class="text-base font-bold text-gold-gradient">٨٬٥٠٠</span><span class="text-xs text-pearl-500">5 كجم</span></div>
+        </div>
+      </div>
+
+      <div class="card-luxe group relative overflow-hidden rounded-3xl bg-white shadow-lg">
+        <div class="relative aspect-square overflow-hidden bg-pearl-100">
+          <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&fm=webp&q=80&w=800" alt="قهوة" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute top-3 right-3 bg-gold-gradient text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-gold-glow">-13%</div>
+        </div>
+        <div class="p-3">
+          <p class="text-xs text-pearl-500">بن العميد</p>
+          <h3 class="font-bold text-sm text-ink-800 mb-2 line-clamp-2">قهوة عربية مختصة</h3>
+          <div class="flex items-baseline justify-between"><span class="text-base font-bold text-gold-gradient">٤٬٨٠٠</span><span class="text-xs text-pearl-500">500 جم</span></div>
+        </div>
+      </div>
+
+      <div class="card-luxe group relative overflow-hidden rounded-3xl bg-white shadow-lg">
+        <div class="relative aspect-square overflow-hidden bg-pearl-100">
+          <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&fm=webp&q=80&w=800" alt="مكسرات" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute top-3 right-3 bg-gold-gradient text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-gold-glow">-12%</div>
+        </div>
+        <div class="p-3">
+          <p class="text-xs text-pearl-500">بيت المكسرات</p>
+          <h3 class="font-bold text-sm text-ink-800 mb-2 line-clamp-2">مكسرات مشكلة ملكية</h3>
+          <div class="flex items-baseline justify-between"><span class="text-base font-bold text-gold-gradient">٧٬٨٠٠</span><span class="text-xs text-pearl-500">500 جم</span></div>
+        </div>
+      </div>
+
+      <div class="card-luxe group relative overflow-hidden rounded-3xl bg-white shadow-lg">
+        <div class="relative aspect-square overflow-hidden bg-pearl-100">
+          <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&fm=webp&q=80&w=800" alt="عطر" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
+          <div class="absolute top-3 right-3 bg-gold-gradient text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-gold-glow">-16%</div>
+          <div class="absolute top-3 left-3 glass-dark text-white text-xs font-bold px-2.5 py-1 rounded-full">⭐ مبيعاً</div>
+        </div>
+        <div class="p-3">
+          <p class="text-xs text-pearl-500">العربية للعود</p>
+          <h3 class="font-bold text-sm text-ink-800 mb-2 line-clamp-2">عطر شرقي فاخر — عود ملكي</h3>
+          <div class="flex items-baseline justify-between"><span class="text-base font-bold text-gold-gradient">٢٤٬٥٠٠</span><span class="text-xs text-pearl-500">100 مل</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FEATURED ═══════════════════════════════════════════ -->
+<section class="px-4 mb-16">
+  <div class="container mx-auto max-w-7xl">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-ink-800"><span class="text-gold-gradient">✨ منتجات مميزة</span></h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="card-luxe glass-light rounded-3xl overflow-hidden">
+        <div class="relative aspect-square">
+          <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&fm=webp&q=80&w=800" alt="زيت زيتون" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-ink-800 line-clamp-1">زيت زيتون بكر ممتاز</h3>
+          <p class="text-xs text-pearl-500 mt-1">إيطاليا 🇮🇹</p>
+          <div class="flex items-center justify-between mt-2"><span class="font-bold text-gold-gradient">٦٬٢٠٠ ريال</span><span class="text-xs text-gold-600">⭐ 4.8</span></div>
+        </div>
+      </div>
+      <div class="card-luxe glass-light rounded-3xl overflow-hidden">
+        <div class="relative aspect-square">
+          <img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&fm=webp&q=80&w=800" alt="موزاريلا" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-ink-800 line-clamp-1">جبنة موزاريلا إيطالية</h3>
+          <p class="text-xs text-pearl-500 mt-1">إيطاليا 🇮🇹</p>
+          <div class="flex items-center justify-between mt-2"><span class="font-bold text-gold-gradient">٤٬٥٠٠ ريال</span><span class="text-xs text-gold-600">⭐ 4.8</span></div>
+        </div>
+      </div>
+      <div class="card-luxe glass-light rounded-3xl overflow-hidden">
+        <div class="relative aspect-square">
+          <img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&fm=webp&q=80&w=800" alt="شوكولاتة" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-ink-800 line-clamp-1">شوكولاتة دارك سويسرية</h3>
+          <p class="text-xs text-pearl-500 mt-1">سويسرا 🇨🇭</p>
+          <div class="flex items-center justify-between mt-2"><span class="font-bold text-gold-gradient">٣٬٢٠٠ ريال</span><span class="text-xs text-gold-600">⭐ 4.9</span></div>
+        </div>
+      </div>
+      <div class="card-luxe glass-light rounded-3xl overflow-hidden">
+        <div class="relative aspect-square">
+          <img src="https://images.unsplash.com/photo-1543158181-e6f9f6712055?auto=format&fit=crop&fm=webp&q=80&w=800" alt="تمر العجوة" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4">
+          <h3 class="font-bold text-ink-800 line-clamp-1">تمر العجوة المدينة</h3>
+          <p class="text-xs text-pearl-500 mt-1">السعودية 🇸🇦</p>
+          <div class="flex items-center justify-between mt-2"><span class="font-bold text-gold-gradient">٩٬٥٠٠ ريال</span><span class="text-xs text-gold-600">⭐ 5.0</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ PHASE 1 CHECKLIST ═══════════════════════════════════════════ -->
+<section class="px-4 pb-32">
+  <div class="container mx-auto max-w-7xl">
+    <div class="glass-dark rounded-3xl p-6 md:p-10 text-white" style="border-radius: 2rem">
+      <h3 class="text-xl md:text-2xl font-bold mb-4 inline-block"><span class="text-gold-shine">✅ Phase 1 — مكتملة</span></h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-6">
+        <div class="flex items-center gap-2 p-3 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10"><span class="text-sm md:text-base">🎨 لوحة ألوان فاخرة (Teal + Gold Gradient)</span></div>
+        <div class="flex items-center gap-2 p-3 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10"><span class="text-sm md:text-base">🌫️ Mesh Gradient متحرك (24s loop)</span></div>
+        <div class="flex items-center gap-2 p-3 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10"><span class="text-sm md:text-base">✨ Glassmorphism 2.0 (light/dark/strong)</span></div>
+        <div class="flex items-center gap-2 p-3 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10"><span class="text-sm md:text-base">🧲 Magnetic CTA Buttons مع shimmer</span></div>
+        <div class="flex items-center gap-2 p-3 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10"><span class="text-sm md:text-base">✏️ Cairo + Amiri fonts</span></div>
+        <div class="flex items-center gap-2 p-3 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10"><span class="text-sm md:text-base">🛒 20 منتج فاخر / 10 فئات</span></div>
+        <div class="flex items-center gap-2 p-3 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10"><span class="text-sm md:text-base">🖼️ صور WebP (q=80) من Unsplash</span></div>
+        <div class="flex items-center gap-2 p-3 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10"><span class="text-sm md:text-base">📱 RTL + Safe-area + PWA-ready</span></div>
+      </div>
+      <p class="mt-6 text-sm text-white/60 text-center">الخطوة التالية: Phase 2 — Zustand Store + Header + Bottom Nav + Product Grid</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ MOBILE BOTTOM NAV (Preview) ═══════════════════════════════════════════ -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 md:hidden" style="padding-bottom: env(safe-area-inset-bottom, 0)">
+  <div class="glass-light-strong mx-2 mb-2 rounded-3xl flex items-center justify-around py-2 px-2 shadow-luxe-lg" style="border-radius: 2rem">
+    <button class="flex flex-col items-center gap-1 px-3 py-2 rounded-2xl bg-gold-gradient text-white">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="text-2xs font-bold">الرئيسية</span>
+    </button>
+    <button class="flex flex-col items-center gap-1 px-3 py-2 rounded-2xl text-ink-700">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span class="text-2xs font-bold">الأقسام</span>
+    </button>
+    <button class="relative flex flex-col items-center gap-1 px-3 py-2 rounded-2xl text-ink-700">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+      <span class="text-2xs font-bold">السلة</span>
+      <span class="absolute top-1 right-2 bg-gold-gradient text-white text-2xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-gold-glow">3</span>
+    </button>
+    <button class="flex flex-col items-center gap-1 px-3 py-2 rounded-2xl text-ink-700">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span class="text-2xs font-bold">حسابي</span>
+    </button>
+  </div>
+</nav>
+
+</body>
+</html>
